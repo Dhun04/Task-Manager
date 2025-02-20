@@ -64,3 +64,68 @@ Backend:
 -Cloudinary (for image storage)
 
 -Nodemailer (for email notifications)
+
+
+
+
+👨‍💻 Contributors
+
+Your Name (Replace with actual contributor names)
+
+🛠️ Installation Guide
+
+Follow these steps to set up and run the project on your local machine.
+
+1️⃣ Clone the Repository
+
+git clone https://github.com/your-repo/mern-signup-system.git
+cd mern-signup-system
+
+2️⃣ Setup Backend
+
+Navigate to the backend folder and install dependencies:
+
+cd backend
+npm install
+
+Create a .env file in the backend directory:
+
+MONGO_URI=mongodb+srv://your-mongodb-url
+JWT_SECRET=your-secret-key
+
+Start the Backend Server
+
+node server.js
+
+3️⃣ Setup Frontend
+
+Navigate to the frontend folder and install dependencies:
+
+cd ../frontend
+npm install
+
+Start the React App
+
+npm start
+
+4️⃣ Open the Application
+
+Visit http://localhost:3000 in your browser.
+
+📜 API Endpoints
+
+Method
+
+Endpoint
+
+Description
+
+POST
+
+/signup
+
+Register a new user
+
+📷 Screenshots
+
+(Add screenshots of the app here)
