@@ -15,52 +15,39 @@ The MERN Task Manager is a full-stack web application built using the MERN (Mong
 
 Features
 
-User Authentication: Sign up, login/logout, JWT authentication, OAuth (Google login)
+1. User Authentication: Sign up, login/logout, JWT authentication, OAuth (Google login)
 
-Task Management:
+2. Task Management: 
+   -Create, read, update, and delete (CRUD) tasks
+   -Assign tasks to users
+   -Set task priorities (High, Medium, Low)
+   -Add due dates and reminders
+   -Label tasks and track status
 
-Create, read, update, and delete (CRUD) tasks
+3. Collaboration: Admins can assign tasks to multiple users
 
-Assign tasks to users
+4. Image Storage: Upload images using Cloudinary
 
-Set task priorities (High, Medium, Low)
+5. State Management: Redux Toolkit & Context API
 
-Add due dates and reminders
+6. Navigation: React Router for frontend navigation
 
-Label tasks and track status
-
-Collaboration: Admins can assign tasks to multiple users
-
-Image Storage: Upload images using Cloudinary
-
-State Management: Redux Toolkit & Context API
-
-Navigation: React Router for frontend navigation
-
-Deployment: Hosted on Vercel (Frontend) and Render/Heroku (Backend)
+7. Deployment: Hosted on Vercel (Frontend) and Render/Heroku (Backend)
 
 Tech Stack
 
 Frontend:
 
-React.js (with Vite)
-
-Redux Toolkit
-
-Tailwind CSS & Material UI
-
-React Router
+-React.js (with Vite)
+-Redux Toolkit
+-Tailwind CSS & Material UI
+-React Router
 
 Backend:
 
-Node.js & Express.js
-
-MongoDB (with Mongoose)
-
-JWT Authentication
-
-Passport.js (for OAuth)
-
-Cloudinary (for image storage)
-
-Nodemailer (for email notifications)
+-Node.js & Express.js
+-MongoDB (with Mongoose)
+-JWT Authentication
+-Passport.js (for OAuth)
+-Cloudinary (for image storage)
+-Nodemailer (for email notifications)
