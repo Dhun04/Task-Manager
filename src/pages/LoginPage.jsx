@@ -1,98 +1,54 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { signupUser, loginUser, oauthLogin } from "../api"; // Import API functions
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-  const [isSignup, setIsSignup] = useState(false); // Toggle between login & signup
-  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // For redirecting
+  const navigate = useNavigate();
 
-  const handleAuth = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    try {
-      if (isSignup) {
-        const response = await signupUser({ username, email, password });
-        console.log("Signup successful:", response);
-      } else {
-        const response = await loginUser({ email, password });
-        console.log("Login successful:", response);
-        localStorage.setItem("token", response.token); // Store token
-      }
-      navigate("/dashboard"); // Redirect after login/signup
-    } catch (error) {
-      console.error("Authentication failed:", error);
-    }
-  };
-
-  const handleOAuthLogin = async () => {
-    try {
-      const response = await oauthLogin();
-      console.log("OAuth Login successful:", response);
-      navigate("/dashboard");
-    } catch (error) {
-      console.error("OAuth Login failed:", error);
-    }
+    console.log("Logging in with:", email, password);
+    navigate("/home");
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h2 className="text-3xl font-bold mb-6">{isSignup ? "Sign Up" : "Login"}</h2>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-700 text-white">
 
-      <form onSubmit={handleAuth} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-80">
-        {isSignup && (
-          <input
-            type="text"
-            placeholder="Username"
-            className="border rounded p-2 w-full mb-2"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        )}
-        <input
-          type="email"
-          placeholder="Email"
-          className="border rounded p-2 w-full mb-2"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="border rounded p-2 w-full mb-4"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button
-          type="submit"
-          className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 w-full"
-        >
-          {isSignup ? "Sign Up" : "Login"}
-        </button>
-      </form>
-
-      <p className="mb-2">or</p>
-
-      <button
-        onClick={handleOAuthLogin}
-        className="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-700 w-full"
-      >
-        Sign in with Google
-      </button>
-
-      <p className="mt-4">
-        {isSignup ? "Already have an account?" : "Don't have an account?"}{" "}
-        <button
-          onClick={() => setIsSignup(!isSignup)}
-          className="text-blue-500 underline"
-        >
-          {isSignup ? "Login here" : "Sign up"}
-        </button>
-      </p>
+      <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-96">
+        <h2 className="text-3xl font-bold text-center">Login</h2>
+        <form onSubmit={handleLogin} className="mt-6">
+          <div className="mb-4">
+            <label className="block mb-1 font-medium">Email</label>
+            <input
+              type="email"
+              className="w-full p-3 rounded-md bg-gray-700 text-white focus:ring-2 focus:ring-blue-500"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-1 font-medium">Password</label>
+            <input
+              type="password"
+              className="w-full p-3 rounded-md bg-gray-700 text-white focus:ring-2 focus:ring-blue-500"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 rounded-md transition">
+            Login
+          </button>
+        </form>
+        <p className="mt-4 text-center text-gray-300">
+          Don't have an account?{" "}
+          <Link to="/signup" className="text-blue-400 hover:underline">
+            Sign Up
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };
