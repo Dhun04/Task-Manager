@@ -1,0 +1,15 @@
+express
+mongoose
+dotenv
+jsonwebtoken
+bcryptjs
+cors
+cookie-parser
+express-validator
+passport
+passport-jwt
+passport-google-oauth20
+multer
+cloudinary
+nodemon
+morgan
