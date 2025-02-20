@@ -9,11 +9,14 @@ Currently, two official plugins are available:
 
 
 
-Overview
+# Overview
 
 The MERN Task Manager is a full-stack web application built using the MERN (MongoDB, Express.js, React.js, and Node.js) stack. It allows users to manage their tasks efficiently with features such as authentication, task assignment, priority levels, and due dates. The app also includes OAuth login and image storage with Cloudinary.
 
-Features
+# 📷 Screenshots
+
+
+# Features
 
 1. User Authentication: Sign up, login/logout, JWT authentication, OAuth (Google login)
 
@@ -39,7 +42,8 @@ Features
 
 8. Deployment: Hosted on Vercel (Frontend) and Render/Heroku (Backend)
 
-Tech Stack
+
+# Tech Stack
 
 Frontend:
 
@@ -68,11 +72,12 @@ Backend:
 
 
 
-👨‍💻 Contributors
+# 👨‍💻 Contributors
 
-Your Name (Replace with actual contributor names)
+1. Dhun Chhabra
+2. 
 
-🛠️ Installation Guide
+# 🛠️ Installation Guide
 
 Follow these steps to set up and run the project on your local machine.
 
@@ -126,6 +131,4 @@ POST
 
 Register a new user
 
-📷 Screenshots
 
-(Add screenshots of the app here)
