@@ -1,46 +1,59 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const HomePage = () => {
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white relative">
-      {/* Header with Black Background */}
-      <div className="w-full bg-black text-white py-6 shadow-lg flex justify-center">
-        <h1 className="text-4xl font-extrabold animate-fadeInDown">🚀 Task Manager</h1>
+    <div className="flex flex-col min-h-screen">
+      {/* Header Section */}
+      <header className="bg-black text-white py-4 text-center text-4xl font-bold">
+        TASK MANAGER
+      </header>
+
+      {/* Main Content Section */}
+      <div className="flex flex-col items-center justify-center flex-grow bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-10">
+        <motion.h1
+          className="text-5xl font-extrabold mb-6"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          Organize Your Tasks Efficiently
+        </motion.h1>
+
+        <motion.p
+          className="text-lg text-center mb-6 max-w-2xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.7 }}
+        >
+          Stay on top of your to-dos with our easy-to-use task management tool.
+          Assign priorities, set deadlines, and collaborate with ease.
+        </motion.p>
+
+        <motion.div
+          className="flex space-x-6"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5, duration: 0.7 }}
+        >
+          <Link to="/tasks">
+            <button className="bg-white text-purple-600 px-6 py-3 rounded-lg font-bold text-lg hover:bg-gray-100 transition">
+              View Tasks
+            </button>
+          </Link>
+          <Link to="/taskform">
+            <button className="bg-black text-white px-6 py-3 rounded-lg font-bold text-lg hover:bg-gray-800 transition">
+              Add Task
+            </button>
+          </Link>
+          <Link to="/login">
+            <button className="bg-green-600 text-white px-6 py-3 rounded-lg font-bold text-lg hover:bg-blue-700 transition">
+              Login
+            </button>
+          </Link>
+        </motion.div>
       </div>
-
-      {/* Main Content */}
-      <div className="flex flex-col items-center justify-center flex-grow animate-fadeIn">
-        <p className="text-lg mb-6 opacity-90">Organize your tasks effortlessly!</p>
-
-        <div className="flex space-x-6">
-          <Link
-            to="/login"
-            className="px-8 py-3 bg-white text-purple-600 font-bold rounded-xl shadow-lg transform transition-all duration-300 hover:scale-110 hover:bg-purple-100 hover:shadow-2xl focus:ring-4 focus:ring-purple-300 animate-bounce"
-          >
-            🔑 Login
-          </Link>
-
-          <Link
-            to="/signup"
-            className="px-8 py-3 bg-white text-blue-600 font-bold rounded-xl shadow-lg transform transition-all duration-300 hover:scale-110 hover:bg-blue-100 hover:shadow-2xl focus:ring-4 focus:ring-blue-300 animate-bounce delay-200"
-          >
-            📝 Sign Up
-          </Link>
-
-          <Link
-            to="/add-task"
-            className="px-8 py-3 bg-white text-green-600 font-bold rounded-xl shadow-lg transform transition-all duration-300 hover:scale-110 hover:bg-green-100 hover:shadow-2xl focus:ring-4 focus:ring-green-300 animate-bounce delay-400"
-          >
-            ➕ Add Task
-          </Link>
-        </div>
-      </div>
-
-      {/* Floating Footer */}
-      <p className="absolute bottom-6 text-sm opacity-80 animate-fadeInUp">
-        Manage your tasks efficiently with ease. ✨
-      </p>
     </div>
   );
 };
