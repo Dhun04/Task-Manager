@@ -1,10 +1,21 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import TaskFormPage from "./pages/TaskFormPage";
+
 function App() {
-    return (
-      <div className="text-center">
-        <h1 className="text-3xl font-bold underline">Hello, Tailwind CSS!</h1>
+  return (
+    <Router>
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/taskform" element={<TaskFormPage />} /> {/* Updated Path */}
+        </Routes>
       </div>
-    );
-  }
-  
-  export default App; // Ensure this is a default export
-  
+    </Router>
+  );
+}
+
+export default App;
