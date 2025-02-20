@@ -15,6 +15,13 @@ The MERN Task Manager is a full-stack web application built using the MERN (Mong
 
 # 📷 Screenshots
 
+![image](https://github.com/user-attachments/assets/fff8f390-65a5-42b0-86e4-36128fd4be7d)
+
+![image](https://github.com/user-attachments/assets/0fb68509-f2a2-40d4-add0-e7f91873f801)
+
+![image](https://github.com/user-attachments/assets/ea84f2a1-1303-4076-818e-9d70e51b21e8)
+
+
 
 # Features
 
