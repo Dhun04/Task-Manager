@@ -6,15 +6,17 @@ const HomePage = () => {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header Section */}
-      <header className="bg-black text-white py-4 text-center text-4xl font-bold">
-        TASK MANAGER
+      <header className="bg-black text-white py-6 text-center text-5xl font-bold">
+      📝TASK MANAGER📝
       </header>
 
       {/* Main Content Section */}
-      <div className="flex flex-col items-center justify-center flex-grow bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-10">
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white p-10 text-center">
+
+
         <motion.h1
-          className="text-5xl font-extrabold mb-6"
-          initial={{ opacity: 0, y: -50 }}
+          className="text-5xl font-extrabold mb-10"
+          initial={{ opacity: 0, y: -60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
