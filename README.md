@@ -19,35 +19,47 @@ Features
 
 2. Task Management: 
    -Create, read, update, and delete (CRUD) tasks
+   
    -Assign tasks to users
+   
    -Set task priorities (High, Medium, Low)
+   
    -Add due dates and reminders
+   
    -Label tasks and track status
 
-3. Collaboration: Admins can assign tasks to multiple users
+4. Collaboration: Admins can assign tasks to multiple users
 
-4. Image Storage: Upload images using Cloudinary
+5. Image Storage: Upload images using Cloudinary
 
-5. State Management: Redux Toolkit & Context API
+6. State Management: Redux Toolkit & Context API
 
-6. Navigation: React Router for frontend navigation
+7. Navigation: React Router for frontend navigation
 
-7. Deployment: Hosted on Vercel (Frontend) and Render/Heroku (Backend)
+8. Deployment: Hosted on Vercel (Frontend) and Render/Heroku (Backend)
 
 Tech Stack
 
 Frontend:
 
 -React.js (with Vite)
--Redux Toolkit
+
+-Redux Toolkit.
+
 -Tailwind CSS & Material UI
+
 -React Router
 
 Backend:
 
 -Node.js & Express.js
+
 -MongoDB (with Mongoose)
+
 -JWT Authentication
+
 -Passport.js (for OAuth)
+
 -Cloudinary (for image storage)
+
 -Nodemailer (for email notifications)
