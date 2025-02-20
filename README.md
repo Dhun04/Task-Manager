@@ -17,7 +17,8 @@ Features
 
 1. User Authentication: Sign up, login/logout, JWT authentication, OAuth (Google login)
 
-2. Task Management: 
+2. Task Management:
+
    -Create, read, update, and delete (CRUD) tasks
    
    -Assign tasks to users
