@@ -1,99 +1,69 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { addTask } from "../api"; // Import API function
+import React, { useState } from "react";
 
 const TaskFormPage = () => {
-  const [taskData, setTaskData] = useState({
-    title: "",
-    description: "",
-    priority: "Medium",
-    dueDate: "",
-    wantAlarm: false,
-  });
+  const [task, setTask] = useState("");
+  const [priority, setPriority] = useState("medium");
+  const [dueDate, setDueDate] = useState("");
+  const [alarmTime, setAlarmTime] = useState("");
 
-  const navigate = useNavigate();
-  const [error, setError] = useState(null);
-
-  // Handle input change
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setTaskData({
-      ...taskData,
-      [name]: type === "checkbox" ? checked : value,
-    });
-  };
-
-  // Handle task submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setError(null);
-
-    try {
-      const userId = localStorage.getItem("userId"); // Get userId from storage
-      if (!userId) {
-        setError("User not authenticated!");
-        return;
-      }
-
-      const response = await addTask({ ...taskData, userId });
-      console.log("Task added successfully:", response);
-      navigate("/tasks"); // Redirect to tasks list
-    } catch (err) {
-      setError(err.response?.data?.error || "Failed to add task.");
-    }
+    console.log("Task Added:", { task, priority, dueDate, alarmTime });
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h2 className="text-3xl font-bold mb-6">Create Task</h2>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-700 text-white">
 
-      {error && <p className="text-red-500">{error}</p>}
 
-      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <input
-          type="text"
-          name="title"
-          placeholder="Task Title"
-          className="border rounded p-2 w-full mb-2"
-          value={taskData.title}
-          onChange={handleChange}
-          required
-        />
-        <textarea
-          name="description"
-          placeholder="Task Description"
-          className="border rounded p-2 w-full mb-2"
-          value={taskData.description}
-          onChange={handleChange}
-          required
-        />
-        <select
-          name="priority"
-          className="border rounded p-2 w-full mb-2"
-          value={taskData.priority}
-          onChange={handleChange}
-        >
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="High">High</option>
-        </select>
-        <input
-          type="date"
-          name="dueDate"
-          className="border rounded p-2 w-full mb-2"
-          value={taskData.dueDate}
-          onChange={handleChange}
-          required
-        />
-        <label className="flex items-center space-x-2 mb-4">
-          <input type="checkbox" name="wantAlarm" checked={taskData.wantAlarm} onChange={handleChange} />
-          <span>Set Reminder</span>
-        </label>
-
-        <button type="submit" className="bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-700 w-full">
-          Add Task
-        </button>
-      </form>
+      <div className="bg-white p-8 rounded-lg shadow-lg w-96 text-gray-900">
+        <h2 className="text-3xl font-bold text-center">Add Task</h2>
+        <form onSubmit={handleSubmit} className="mt-6">
+          <div className="mb-4">
+            <label className="block mb-1 font-medium">Task Name</label>
+            <input
+              type="text"
+              className="w-full p-3 rounded-md bg-gray-200 focus:ring-2 focus:ring-purple-500"
+              value={task}
+              onChange={(e) => setTask(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-1 font-medium">Priority</label>
+            <select
+              className="w-full p-3 rounded-md bg-gray-200 focus:ring-2 focus:ring-purple-500"
+              value={priority}
+              onChange={(e) => setPriority(e.target.value)}
+            >
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <div className="mb-4">
+            <label className="block mb-1 font-medium">Due Date</label>
+            <input
+              type="date"
+              className="w-full p-3 rounded-md bg-gray-200 focus:ring-2 focus:ring-purple-500"
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block mb-1 font-medium">Set Alarm</label>
+            <input
+              type="time"
+              className="w-full p-3 rounded-md bg-gray-200 focus:ring-2 focus:ring-purple-500"
+              value={alarmTime}
+              onChange={(e) => setAlarmTime(e.target.value)}
+            />
+          </div>
+          <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-md transition">
+            Add Task
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
