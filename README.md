@@ -116,20 +116,12 @@ npm run dev
 
 4️⃣ Open the Application
 
-Visit http://localhost:3000 in your browser.
+After running npm run dev, a localhost link will appear.
 
-📜 API Endpoints
+Open that link in your browser.
 
-Method
 
-Endpoint
 
-Description
 
-POST
-
-/signup
-
-Register a new user
 
 
