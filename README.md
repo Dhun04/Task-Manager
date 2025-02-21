@@ -90,15 +90,12 @@ Follow these steps to set up and run the project on your local machine.
 
 1️⃣ Clone the Repository
 
-git clone https://github.com/your-repo/mern-signup-system.git
-cd mern-signup-system
+git clone https://github.com/Dhun04/Task-Manager.git
+cd Task-Manager
 
 2️⃣ Setup Backend
 
-Navigate to the backend folder and install dependencies:
-
-cd backend
-npm install
+Navigate to the backend folder (server) and install dependencies:
 
 Create a .env file in the backend directory:
 
@@ -107,18 +104,15 @@ JWT_SECRET=your-secret-key
 
 Start the Backend Server
 
+cd server
 node server.js
 
 3️⃣ Setup Frontend
 
-Navigate to the frontend folder and install dependencies:
-
-cd ../frontend
-npm install
-
 Start the React App
 
-npm start
+npm install
+npm run dev
 
 4️⃣ Open the Application
 
