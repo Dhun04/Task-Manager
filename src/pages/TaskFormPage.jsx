@@ -1,69 +1,124 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const TaskFormPage = () => {
   const [task, setTask] = useState("");
   const [priority, setPriority] = useState("medium");
   const [dueDate, setDueDate] = useState("");
-  const [alarmTime, setAlarmTime] = useState("");
+  const [setAlarm, setSetAlarm] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Task Added:", { task, priority, dueDate, alarmTime });
+    if (!task.trim()) {
+      setError("Task name is required!");
+      return;
+    }
+    if (!dueDate) {
+      setError("Please select a due date!");
+      return;
+    }
+    
+    console.log("Task Added:", { task, priority, dueDate, setAlarm });
+
+    // Clear fields
+    setTask("");
+    setPriority("medium");
+    setDueDate("");
+    setSetAlarm(false);
+    setError("");
+
+    // Navigate to Task List
+    navigate("/tasks");
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-700 text-white">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-blue-800 to-gray-900 text-white p-6 relative">
+      {/* Task Form Card */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.8 }} 
+        animate={{ opacity: 1, scale: 1 }} 
+        transition={{ duration: 0.5 }}
+        className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-lg text-gray-900 mt-6"
+      >
+        <h2 className="text-3xl font-extrabold text-center text-blue-800 mb-6">Add Task</h2>
 
+        {error && <p className="text-red-600 text-center mb-4 font-semibold">{error}</p>}
 
-      <div className="bg-white p-8 rounded-lg shadow-lg w-96 text-gray-900">
-        <h2 className="text-3xl font-bold text-center">Add Task</h2>
-        <form onSubmit={handleSubmit} className="mt-6">
-          <div className="mb-4">
-            <label className="block mb-1 font-medium">Task Name</label>
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Task Name Input */}
+          <div>
+            <label className="block mb-2 font-semibold text-gray-700">Task Name📝</label>
             <input
               type="text"
-              className="w-full p-3 rounded-md bg-gray-200 focus:ring-2 focus:ring-purple-500"
+              className="w-full p-3 rounded-lg bg-gray-100 border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:outline-none"
               value={task}
               onChange={(e) => setTask(e.target.value)}
               required
             />
           </div>
-          <div className="mb-4">
-            <label className="block mb-1 font-medium">Priority</label>
+
+          {/* Priority Selection */}
+          <div>
+            <label className="block mb-2 font-semibold text-gray-700">Priority📌</label>
             <select
-              className="w-full p-3 rounded-md bg-gray-200 focus:ring-2 focus:ring-purple-500"
+              className="w-full p-3 rounded-lg bg-gray-100 border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:outline-none"
               value={priority}
               onChange={(e) => setPriority(e.target.value)}
             >
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
+              <option value="low">🟢Low</option>
+              <option value="medium">🟡Medium</option>
+              <option value="high">🟠High</option>
             </select>
           </div>
-          <div className="mb-4">
-            <label className="block mb-1 font-medium">Due Date</label>
+
+          {/* Due Date Input */}
+          <div>
+            <label className="block mb-2 font-semibold text-gray-700">Due Date📅</label>
             <input
               type="date"
-              className="w-full p-3 rounded-md bg-gray-200 focus:ring-2 focus:ring-purple-500"
+              className="w-full p-3 rounded-lg bg-gray-100 border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:outline-none"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
               required
             />
           </div>
-          <div className="mb-4">
-            <label className="block mb-1 font-medium">Set Alarm</label>
+
+          {/* Set Alarm Checkbox */}
+          <div className="flex items-center space-x-3">
             <input
-              type="time"
-              className="w-full p-3 rounded-md bg-gray-200 focus:ring-2 focus:ring-purple-500"
-              value={alarmTime}
-              onChange={(e) => setAlarmTime(e.target.value)}
+              type="checkbox"
+              id="setAlarm"
+              checked={setAlarm}
+              onChange={(e) => setSetAlarm(e.target.checked)}
+              className="w-5 h-5 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500"
             />
+            <label htmlFor="setAlarm" className="font-semibold text-gray-700">Set Alarm⏰</label>
           </div>
-          <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-md transition">
+
+          {/* Submit Button */}
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            type="submit"
+            className="w-full bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white font-bold py-3 rounded-lg shadow-md transition"
+          >
             Add Task
-          </button>
+          </motion.button>
         </form>
-      </div>
+      </motion.div>
+
+      {/* View Tasks Button at Bottom Right */}
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="fixed bottom-6 right-6 bg-purple-500 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition"
+        onClick={() => navigate("/tasks")}
+      >
+        View Tasks
+      </motion.button>
     </div>
   );
 };
