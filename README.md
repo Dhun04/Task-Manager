@@ -107,6 +107,7 @@ JWT_SECRET=your-secret-key
 Start the Backend Server
 
 cd server
+
 node server.js
 
 3️⃣ Setup Frontend
