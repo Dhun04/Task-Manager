@@ -84,7 +84,10 @@ Backend:
 # 👨‍💻 Contributors
 
 1. Dhun Chhabra
-2. 
+2. Indhumathi
+3. sowmiya
+4. varsha
+5. kaviya
 
 # 🛠️ Installation Guide
 
